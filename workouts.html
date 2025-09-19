@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GreenBite — Workouts</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="workouts.css">
+</head>
+<body>
+<header class="container nav">
+  <div class="brand"><div class="logo">GB</div></div>
+  <nav>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="workouts.html">Workouts</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <h2>Workout Generator</h2>
+  <div class="card" style="max-width:700px">
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <select id="bodypart">
+        <option value="full">Full Body</option>
+        <option value="arms">Arms</option>
+        <option value="legs">Legs</option>
+      </select>
+      <select id="equipment">
+        <option value="none">None</option>
+        <option value="dumbbells">Dumbbells</option>
+        <option value="kettlebells">Kettlebells</option>
+      </select>
+      <button class="btn" id="gen">Generate</button>
+    </div>
+    <div id="plan" style="margin-top:.8rem"></div>
+  </div>
+</main>
+
+<script src="scripts/common.js"></script>
+<script src="workouts.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GreenBite — Calculator</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="container nav">
+  <div class="brand"><div class="logo">GB</div></div>
+  <nav>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="recipes.html">Recipes</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <h2>Calorie & Nutrition Calculator</h2>
+  <form id="calc-form" class="card" style="display:grid;gap:.6rem;max-width:600px">
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+      <input placeholder="Age (years)" id="age" type="number">
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <input placeholder="Height (cm)" id="height" type="number">
+      <input placeholder="Weight (kg)" id="weight" type="number">
+    </div>
+    <select id="activity">
+      <option value="1.2">Sedentary (little or no exercise)</option>
+      <option value="1.375">Lightly active</option>
+      <option value="1.55">Moderately active</option>
+      <option value="1.725">Very active</option>
+      <option value="1.9">Super active</option>
+    </select>
+    <div style="display:flex;gap:.5rem">
+      <button class="btn" type="button" id="calc-btn">Calculate</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+
+  <div id="results" class="card hidden" style="margin-top:1rem"></div>
+</main>
+
+<!-- JS files -->
+<script src="scripts/common.js"></script>
+<script src="js/calculator.js" defer></script>
+</body>
+</html>

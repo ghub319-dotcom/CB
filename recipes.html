@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GreenBite — Recipes</title>
+  <link rel="stylesheet" href="recipes.css">
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="recipes.html">Recipes</a>
+    <a href="calculator.html">Calculator</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Healthy Recipes</h2>
+  <input id="search" placeholder="Search by name">
+  <select id="filter">
+    <option value="">All</option>
+    <option>Vegetarian</option>
+    <option>Meat</option>
+    <option>Vegan</option>
+  </select>
+  <button id="clear">Clear</button>
+
+  <div id="recipes"></div>
+</main>
+
+<div id="modal" class="hidden">
+  <div id="modal-inner"></div>
+</div>
+
+<script src="recipes.js"></script>
+</body>
+</html>
