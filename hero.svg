@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<rect width="1200" height="600" fill="#F0FFF4"/>
+<circle cx="200" cy="300" r="160" fill="#A8E6CF"/>
+<rect x="360" y="120" width="700" height="360" rx="20" fill="#FFF"/>
+<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="40" fill="#255D3A" font-family="Arial">GreenBite — Healthy Living</text>
+</svg>
