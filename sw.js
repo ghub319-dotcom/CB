@@ -1,21 +1,5 @@
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open('greenbite-v1').then(cache => {
-      return cache.addAll([
-        './',
-        './index.html',
-        './styles.css',
-        './scripts/common.js',
-        './assets/logo.svg',
-        './assets/hero.svg'
-      ]);
-    })
-  );
-  self.skipWaiting();
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(resp => resp || fetch(event.request))
-  );
-});
+// sw.js - very small service worker for caching
+const CACHE='greenbite-v1';
+const toCache = ['/', '/index.html','/styles.css','/recipes.html','/calculator.html','/workouts.html','/mindfulness.html','/contact.html'];
+self.addEventListener('install', e=>{ e.waitUntil(caches.open(CACHE).then(c=>c.addAll(toCache))); });
+self.addEventListener('fetch', e=>{ e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))); });
