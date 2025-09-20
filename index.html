@@ -1,34 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenBite - Home</title>
-    <!-- External CSS -->
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GreenBite — Home</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/logo.svg">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <div class="logo">GreenBite🌏</div>
-        <div>
-            <a href="index.html">Home🏠</a>
-            <a href="recipes.html">Recipes🍽️</a>
-            <a href="calculator.html">Calculator🧮</a>
-            <a href="workouts.html">Workouts🏋️‍♂️</a>
-            <a href="mindfulness.html">Mindfulness🧘‍♀️</a>
-            <a href="contact.html">Contact📞</a>
-        </div>
-    </nav>
-    <section class="hero">
-        <h1>Welcome to GreenBite 💚🍏🥗📗🟢🟩</h1>
-        <p>Your wellness journey starts here.✨</p>
-        <button class="btn" id="startBtn">Get Started🏃</button>
-    </section>
-    <footer>
-        <p>&copy; 2025 GreenBite - Healthy life Style👫</p>
-    </footer>
+<header class="header container">
+  <div class="brand">
+    <img src="assets/logo.svg" alt="GreenBite logo">
+    <div>
+      <div style="font-weight:800">GreenBite</div>
+      <div class="small">Wellness • Recipes • Mindfulness</div>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="recipes.html">Recipes</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="workouts.html">Workouts</a>
+    <a href="mindfulness.html">Mindfulness</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="hamburger" id="hb">☰</div>
+</header>
 
-    <!-- External JavaScript -->
-    <script src="script.js"></script>
+<main class="container">
+  <section class="hero">
+    <div class="left">
+      <div class="slogan" id="slogan">Eat well. Move more. Live mindfully.</div>
+      <h1>Small changes. Big impact.</h1>
+      <p>GreenBite helps you make healthy living simple. Recipes, workouts, and mindful tools — all in one place.</p>
+      <div class="card small">
+        <strong>Health tip of the day</strong>
+        <div id="dailyTip" style="margin-top:8px"></div>
+      </div>
+      <div style="margin-top:12px">
+        <input id="newsletterEmail" placeholder="Your email">
+        <button class="btn" id="subBtn">Subscribe</button>
+      </div>
+    </div>
+    <div class="right center">
+      <img src="assets/hero.svg" alt="hero" style="max-width:100%;border-radius:12px">
+    </div>
+  </section>
+
+  <section>
+    <h2>Featured</h2>
+    <div class="cards" id="featured">
+      <div class="card">
+        <h3>Quick 20-min full body</h3>
+        <p class="small">A short routine you can do at home.</p>
+      </div>
+      <div class="card">
+        <h3>Quinoa Power Salad</h3>
+        <p class="small">Protein-rich and filling.</p>
+      </div>
+      <div class="card">
+        <h3>Mindful Breathing</h3>
+        <p class="small">Calm your mind in 5 minutes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:24px">
+    <h2>Saved</h2>
+    <div id="saved" class="cards small"></div>
+  </section>
+</main>
+
+<footer class="footer container">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+    <div>© GreenBite — Simple wellness for everyday life</div>
+    <div class="small">Made for learning • <a href="recipes.html">Recipes</a> • <a href="contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<div id="modal" class="modal"><div class="dialog" id="modalDialog"></div></div>
+
+<script src="scripts/common.js"></script>
+<script>
+document.getElementById('dailyTip').textContent = getDailyTip();
+document.getElementById('subBtn').addEventListener('click', () => {
+  const email = document.getElementById('newsletterEmail').value.trim();
+  if(subscribeNewsletter(email)) {
+    alert('Thanks — subscribed!');
+    document.getElementById('newsletterEmail').value = '';
+  } else alert('Please enter a valid email.');
+});
+
+// simple hamburger toggle for mobile
+document.getElementById('hb').addEventListener('click', () => {
+  const nav = document.querySelector('nav');
+  nav.style.display = nav.style.display === 'block' ? '' : 'block';
+});
+
+// show saved from localStorage
+(function showSaved(){
+  const saved = JSON.parse(localStorage.getItem('greenbite_saved')||'[]');
+  const container = document.getElementById('saved');
+  if(!saved.length) { container.innerHTML = '<div class="small">No saved items yet.</div>'; return; }
+  container.innerHTML = saved.map(s=>`<div class="card"><strong>${s}</strong></div>`).join('');
+})();
+
+// register service worker if available
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
 </body>
 </html>
